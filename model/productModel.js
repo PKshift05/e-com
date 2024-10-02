@@ -6,7 +6,7 @@ const getAllProduct = async()=>{
 }
 
 const getProductById = async(id)=>{
-    const result = await pool.query('Select * from product where id= $1',[id]);
+    const result = await pool.query('Select * from products where id= $1',[id]);
     return result.rows[0];
 }
 

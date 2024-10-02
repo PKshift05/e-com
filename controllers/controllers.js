@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { createUser, findUserEmail } = require('../model/userModel')
-
+require('dotenv').config()
 
 exports.register = async (req, res) => {
     const {email, password} = req.body;
@@ -23,7 +23,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
     const {email, password} = req.body;
 
-    const user = await findUserByEmail(email);
+    const user = await findUserEmail(email);
     if (!user) {
         return res.status(400).json({ message: 'Sai thông tin đăng nhập.' });
     }
